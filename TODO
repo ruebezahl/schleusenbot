@@ -1,0 +1,5 @@
+todos:
+
+    * proper irc errorhandling
+    * multiple channel support
+    * some more irc abstractions (private messages, ...)
