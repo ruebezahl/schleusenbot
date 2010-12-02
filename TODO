@@ -1,5 +1,6 @@
 todos:
-
-    * proper irc errorhandling
+    
+    * ssl support
+    * proper irc errorhandling (nick already taken, etc pp)
     * multiple channel support
     * some more irc abstractions (private messages, ...)
