@@ -52,3 +52,7 @@ Bot.prototype.setTopic = function(newTopic){
 Bot.prototype.say = function(message){
     this.client.send("PRIVMSG",this.channel,":"+message);
 }
+
+Bot.prototype.notice = function(message){
+    this.client.send("NOTICE",this.channel,":"+message);
+}
