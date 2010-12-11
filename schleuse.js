@@ -23,7 +23,7 @@ v4server.on("message",function(msg, rinfo) {
         
         if ( (new Date().getTime() - lastRingDate) > 60000){
             lastRingDate = new Date().getTime();
-            bot.say("jemand klingelt an der haustuer.");
+            bot.notice("jemand klingelt an der haustuer.");
         }
         return;
     }
