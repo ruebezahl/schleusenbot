@@ -34,7 +34,7 @@ v4server.on("message",function(msg, rinfo) {
     }else if (msg =="n") {
         doorstate="hq closed";
     }else{
-        doorstate="hq undefined";
+        console.log("received undefined doorstate: "+msg);
     }
 
     channelstate = bot.getTopic().match(/(hq\s.*?)\s*\|/g);
