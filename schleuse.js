@@ -1,6 +1,7 @@
 // udp listener
 
 var dgram = require("dgram");
+var http = require("http");
 var v4server = dgram.createSocket("udp4");
 var ircbot = require("./ircbot");
 var bot = new ircbot.Bot("space.blafasel.de",6667,"#ccc","schleuse");
@@ -8,6 +9,8 @@ var doorstate = null;
 var lastRingDate = null;
 var lastSchlaubergerDate = null;
 
+
+// listen for schleusen-events
 v4server.on("message",function(msg, rinfo) {
   
     // check remote ip 
@@ -49,7 +52,19 @@ v4server.on("listening",function(){
     console.log("server listening "+ address.address + ":" + address.port);
 });
 
+// listen for schleusen events
 v4server.bind(2080);
+
+// connect to channel
 bot.connect();
+
+// http-server
+http.createServer(function (req, res){
+	res.writeHead(200, {'Content-Type': 'text/plain'});
+	res.end(doorstate + "\n");
+}).listen(80,"127.0.0.1")
+
+
+
 
 
