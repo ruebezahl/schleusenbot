@@ -9,6 +9,8 @@ var doorstate = null;
 var lastRingDate = null;
 var lastSchlaubergerDate = null;
 
+var doorstate_open   = "hq open   ";
+var doorstate_closed = "hq closed ";
 
 // listen for schleusen-events
 v4server.on("message",function(msg, rinfo) {
@@ -24,7 +26,7 @@ v4server.on("message",function(msg, rinfo) {
 
     if (msg == "b" || msg == "B"){
         
-        if ( (new Date().getTime() - lastRingDate) > 60000){
+        if ( ((new Date().getTime() - lastRingDate) > 60000) && (doorstate == doorstate_closed)  ){
             lastRingDate = new Date().getTime();
             bot.notice("jemand klingelt an der haustuer.");
         }
@@ -33,9 +35,9 @@ v4server.on("message",function(msg, rinfo) {
     
     
     if (msg == "p") {
-        doorstate="hq open  ";
+        doorstate=doorstate_open;
     }else if (msg =="n") {
-        doorstate="hq closed";
+        doorstate=doorstate_closed;
     }else{
         console.log("received undefined doorstate: "+msg);
     }
