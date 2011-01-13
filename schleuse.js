@@ -9,8 +9,8 @@ var doorstate = null;
 var lastRingDate = null;
 var lastSchlaubergerDate = null;
 
-var doorstate_open   = "hq open   ";
-var doorstate_closed = "hq closed ";
+var doorstate_open   = "hq open  ";
+var doorstate_closed = "hq closed";
 
 // listen for schleusen-events
 v4server.on("message",function(msg, rinfo) {
