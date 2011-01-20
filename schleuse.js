@@ -62,7 +62,12 @@ bot.connect();
 
 // http-server
 http.createServer(function (req, res){
-	res.writeHead(200, {'Content-Type': 'text/plain'});
+	res.writeHead(200, {
+		'Content-Type': 'text/plain',
+		'Cache-Control' : 'max-age=0, no-cache, no-store, must-revalidate',
+                'Pragma' : 'no-cache'
+	});
+
 	res.end(doorstate + "\n");
 }).listen(8080)
 
