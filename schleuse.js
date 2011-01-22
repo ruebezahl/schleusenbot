@@ -71,6 +71,12 @@ http.createServer(function (req, res){
 	res.end(doorstate + "\n");
 }).listen(8080)
 
+// tcp server
+// most simple acces, just connect a tcp socket. 
+// Status will be written to it and the connection closed
+//
+// Example usage:
+// nc6 $HOST 8001
 net.createServer( function(c){
 	c.end(doorstate + "\n")
 } ).listen(8001)
