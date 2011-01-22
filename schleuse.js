@@ -1,6 +1,7 @@
 // udp listener
 
 var dgram = require("dgram");
+var net = require("net");
 var http = require("http");
 var v4server = dgram.createSocket("udp4");
 var ircbot = require("./ircbot");
@@ -32,8 +33,7 @@ v4server.on("message",function(msg, rinfo) {
         }
         return;
     }
-    
-    
+     
     if (msg == "p") {
         doorstate=doorstate_open;
     }else if (msg =="n") {
@@ -71,7 +71,7 @@ http.createServer(function (req, res){
 	res.end(doorstate + "\n");
 }).listen(8080)
 
-
-
-
+net.createServer( function(c){
+	c.end(doorstate + "\n")
+} ).listen(8001)
 
