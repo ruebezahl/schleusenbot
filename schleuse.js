@@ -1,17 +1,20 @@
-// udp listener
-
 var dgram = require("dgram");
 var net = require("net");
 var http = require("http");
 var v4server = dgram.createSocket("udp4");
+
+// load and instanciate the ircbot
 var ircbot = require("./ircbot");
 var bot = new ircbot.Bot("space.blafasel.de",6667,"#ccc","schleuse");
+
+// some ugly globals
 var doorstate = null;
 var lastRingDate = null;
 var lastSchlaubergerDate = null;
-
 var doorstate_open   = "hq open  ";
 var doorstate_closed = "hq closed";
+
+
 
 // listen for schleusen-events
 v4server.on("message",function(msg, rinfo) {
@@ -61,6 +64,7 @@ v4server.bind(2080);
 bot.connect();
 
 // http-server
+// access via http GET
 http.createServer(function (req, res){
 	res.writeHead(200, {
 		'Content-Type': 'text/plain',
