@@ -9,7 +9,6 @@ var bot = new ircbot.Bot("space.blafasel.de",6667,"#ccc","schleuse");
 
 // some ugly globals
 var doorstate = null;
-var lastRingDate = null;
 var ringCounter = 0;
 var lastSchlaubergerDate = null;
 var doorstate_open   = "hq open  ";
@@ -41,9 +40,6 @@ udplistener.on("message",function(msg, rinfo) {
         if ( ((new Date().getTime() - lastRingDate) > 60000) && (doorstate == doorstate_closed)  ){
             lastRingDate = new Date().getTime();
             bot.notice("jemand klingelt an der haustuer.");
-        }else if (ringCounter > 15){
-			bot.notice("jemand klingelt an der haustuer sturm.");
-			ringCounter=0;
 		}
         return;
     }
