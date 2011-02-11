@@ -34,6 +34,11 @@ Bot.prototype.connect = function(){
 
     this.client.addListener('PRIVMSG', function(prefix, to, text) {
     });
+
+	this.client.addListener('DISCONNECT', function(why){
+		console.log('disconnected because of '+ why +', trying reconnect');
+		this.client.connect(self.nick, self.nick, self.nick);
+	};
 }
 
 
