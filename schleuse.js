@@ -36,11 +36,15 @@ udplistener.on("message",function(msg, rinfo) {
 
     // doorbell event
     if (msg == "b" || msg == "B"){
-        
+        ringCounter++;
+
         if ( ((new Date().getTime() - lastRingDate) > 60000) && (doorstate == doorstate_closed)  ){
             lastRingDate = new Date().getTime();
             bot.notice("jemand klingelt an der haustuer.");
-        }
+        }else if (ringCounter > 15){
+			bot.notice("jemand klingelt an der haustuer sturm.");
+			ringCounter=0;
+		}
         return;
     }
      
