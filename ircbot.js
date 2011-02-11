@@ -35,6 +35,8 @@ Bot.prototype.connect = function(){
     this.client.addListener('PRIVMSG', function(prefix, to, text) {
     });
 
+    // when the DISCONNECT event is emitted by the client, somehow the
+    // connection was dropped (timeout, eof) see client.disconnect
 	this.client.addListener('DISCONNECT', function(why){
 		console.log('disconnected because of '+ why +', trying reconnect');
 		this.client.connect(self.nick, self.nick, self.nick);
