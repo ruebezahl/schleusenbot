@@ -17,6 +17,7 @@ var bot = new ircbot.Bot("space.blafasel.de",6667,"#ccc","schleuse");
 var doorstate = null;
 var ringCounter = 0;
 var lastSchlaubergerDate = null;
+var lastRingDate = null;
 var doorstate_open   = "hq open  ";
 var doorstate_closed = "hq closed";
 
