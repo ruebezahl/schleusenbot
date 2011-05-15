@@ -18,8 +18,8 @@ var doorstate = null;
 var ringCounter = 0;
 var lastSchlaubergerDate = null;
 var lastRingDate = null;
-var doorstate_open   = "hq open  ";
-var doorstate_closed = "hq closed";
+var doorstate_open   = "hq up";
+var doorstate_closed = "hq zu";
 
 
 // schleusen eventlistener
